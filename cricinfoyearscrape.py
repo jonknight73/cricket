@@ -1,7 +1,10 @@
-#scrapes cricinfo statguru to find the average runs/wicket for the 5 years either side of the year input
-#runs through the data for all years in test history
-#outputs to eradata.txt
+"""Scrapes cricinfo for information about average runs per wicket in years
 
+scrapes cricinfo statguru to find the average runs/wicket for the 5 years either side of the year input
+runs through the data for all years in test history
+outputs to eradata.txt
+
+"""
 from bs4 import BeautifulSoup
 import requests
 import re

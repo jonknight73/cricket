@@ -1,3 +1,15 @@
+"""Draft a team and the program will simulate a league. You can also have the computer draft all the teams.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec aliquam diam. Quisque nec elit tellus. Mauris
+mollis fringilla erat, ut sagittis ligula varius vitae. Vestibulum eget neque neque. Etiam volutpat viverra dolor, eget
+volutpat orci blandit sit amet. Aliquam massa lorem, blandit nec dignissim vel, fermentum eu mi. Vivamus eleifend enim
+non pellentesque egestas. Phasellus pretium lectus a justo consequat, ut facilisis dui tempor. Donec pulvinar nisl sit
+amet libero rhoncus, non dignissim diam consequat. Aliquam erat volutpat. Integer eu condimentum velit.
+
+  Typical usage example:
+
+
+"""
 import pickle, random
 from historical import histplayers, HistoricalYearsSelect
 from customleague import teamnumber, gamenumber, league

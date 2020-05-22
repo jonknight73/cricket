@@ -1,3 +1,15 @@
+"""Sets up a game.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec aliquam diam. Quisque nec elit tellus. Mauris
+mollis fringilla erat, ut sagittis ligula varius vitae. Vestibulum eget neque neque. Etiam volutpat viverra dolor, eget
+volutpat orci blandit sit amet. Aliquam massa lorem, blandit nec dignissim vel, fermentum eu mi. Vivamus eleifend enim
+non pellentesque egestas. Phasellus pretium lectus a justo consequat, ut facilisis dui tempor. Donec pulvinar nisl sit
+amet libero rhoncus, non dignissim diam consequat. Aliquam erat volutpat. Integer eu condimentum velit.
+
+  Typical usage example:
+
+
+"""
 import random, time, copy, os, shutil, datetime
 from callcricketnew import test, innings, bowling, player, team, quickorder, listshow, pitchmake
 from altcricket import seri, showteam, order, quickorder
@@ -9,7 +21,7 @@ def setup(home, away):
 	t.home.name = home
 	t.away.name = away
 	t.venue = t.home.name
-	t.year = 2020
+	t.year = datetime.datetime.now().year
 	t.weather = t.home.name
 	t.pitch = pitchmake(t.weather)
 	t.raw = [t.year, t.home.name, t.away.name, "Lord's",'', '','','','']
@@ -21,7 +33,7 @@ def setup(home, away):
 def value (p, t, s = False):
 	x = p.bat
 	if quickorder(p.tag) == 3: x = x + (60-p.bowl)*3*(t.pitch[1]/t.pitch[0])
-	elif quickorder (p.tag) == 4: 
+	elif quickorder (p.tag) == 4:
 		x = x + (60-p.bowl)*3*(t.pitch[0]/t.pitch[1])
 		if s == True: x = x*1.5
 	return x + 10 * random.random()
@@ -74,7 +86,7 @@ def game(t):
 		else: i.xi = i.active
 		#print (i.name, i.xi, i.squad, i.active)
 		i.gamecapt = [x for x in i.xi if x.capt == max([x.capt for x in i.xi])][0]
-		for j in i.xi: 
+		for j in i.xi:
 			if 'WK' in j.tag: i.wk = j
 		if i.wk == '': i.wk = random.choice([x for x in i.xi if x.bowl > 50 or x in i.xi[:4] or'Bat' in x.tag])
 		showteam(i)

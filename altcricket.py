@@ -1,3 +1,15 @@
+"""Simulate the entire history of Test match cricket, with a number of different alternate historical options.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec aliquam diam. Quisque nec elit tellus. Mauris
+mollis fringilla erat, ut sagittis ligula varius vitae. Vestibulum eget neque neque. Etiam volutpat viverra dolor, eget
+volutpat orci blandit sit amet. Aliquam massa lorem, blandit nec dignissim vel, fermentum eu mi. Vivamus eleifend enim
+non pellentesque egestas. Phasellus pretium lectus a justo consequat, ut facilisis dui tempor. Donec pulvinar nisl sit
+amet libero rhoncus, non dignissim diam consequat. Aliquam erat volutpat. Integer eu condimentum velit.
+
+  Typical usage example:
+
+
+"""
 import random, time, copy, os, shutil, datetime, pickle
 from callcricketnew import test, innings, bowling, player, team, quickorder, listshow, pitchmake, playerwrite, scoreformat
 

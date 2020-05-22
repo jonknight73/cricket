@@ -1,5 +1,7 @@
-# THIS FILE SCRAPES DATA FROM CRICINFO, TURNS IT INTO READABLE DATA, AND EXPORTS IT TO PLAYERS.TXT
+"""THIS FILE SCRAPES DATA FROM CRICINFO, TURNS IT INTO READABLE DATA, AND EXPORTS IT TO PLAYERS.TXT.
 
+WARNING: THIS FILE MAY TAKE A LONG TIME TO COMPLETE RUNNING.
+"""
 print ('WARNING: THIS FILE MAY TAKE A LONG TIME TO COMPLETE RUNNING.')
 
 a = 700 #Number of players to read, starting with Cap 1 for the country (doesn't need to be exact, program will end with an error but still execute)
@@ -11,6 +13,13 @@ import requests
 import re
 
 def scrape (x):
+    """
+    Scrapes cricinfo for player stats
+    :param x: the cricinfo player id
+    :return:
+
+    Writes to global ReducedStats variable
+    """
     global ReducedStats
     url = str('http://www.espncricinfo.com/ci/content/player/' + str(x) + '.html')
     r = requests.get(url)

@@ -6,10 +6,11 @@ The teams can be loaded from a textfile, or created using the database of real p
 
 
 """
-from custom import getcustom
+from custom import getcustom, load, find, playermake
 from game import setup, game
 from altcricket import seri, statsdump
-import os
+from callcricketnew import team, listshow, test, pitchmake
+import os, datetime
 
 def league (t, n):
 	"""
@@ -41,7 +42,7 @@ def league (t, n):
 				print ()
 				#print (i.name, 'vs.', j.name)
 				print ()
-				g = setup (i.name, j.name)
+				g = rawksetup (i, j)
 				g.home.active = i.active
 				g.away.active = j.active
 				g.no = c
@@ -107,14 +108,63 @@ def gamenumber ():
 		except: pass
 	return n
 
+def rawksetup(home, away):
+	t = test()
+	t.home = home
+	t.away = away
+	t.venue = home.ground
+	t.year = datetime.datetime.now().year
+	t.weather = t.home.name
+	t.pitch = pitchmake(t.weather)
+	t.raw = [t.year, t.home.name, t.away.name, "Lord's",'', '','','','']
+	t.series = seri()
+	t.folder = 'scorecards'
+	t.saveallcards = True
+	return t
+
+
+def rawkpossible():
+	a, c = [], []
+	with open ('rawkteams.txt') as g:
+		for line in g: a.append(line[:-1])
+	n = 0
+	for i in a:
+		if i == '': c.append(a[n+1])
+		n +=1
+	return c, a
+
+
+# processes rawkteam.txt
+
 if __name__ == '__main__':
-	print ('Custom league')
+	print ('RAWK league')
 
-	x = teamnumber ()
-	t = []
-	for i in range (x):
-		t.append(getcustom(t))
 
-	n = gamenumber ()
+	teams=[]
+	c,a = rawkpossible()
 
-	league (t, n)
+
+	for i in c:
+		t = team()
+		x = i.strip('[').strip(']').split(',')
+		t.name = x[0].strip('\'')
+		t.ground = x[1].strip('\'')
+		print(t.name + ' at ' + t.ground)
+		p = find(i, a)
+		for j in p:
+			t.active.append(playermake(j,t))
+
+		teams.append(t)
+
+	league(teams,1)
+
+
+
+	# x = teamnumber ()
+	# t = []
+	# for i in range (x):
+	# 	t.append(getcustom(t))
+	#
+	# n = gamenumber ()
+
+	# league (t, n)
